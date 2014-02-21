@@ -1,0 +1,5 @@
+myapp_venv/
+.project
+*.pyc
+*.pyo
+*~
