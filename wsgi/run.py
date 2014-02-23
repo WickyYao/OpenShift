@@ -10,7 +10,7 @@ def index():
     return 'Hello World!!!!!!'
 
 @app.route('/fancy')
-def index():
+def fancy():
     return 'Love Fancy!!!!!!'
 
 if __name__ == "__main__":
