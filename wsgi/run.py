@@ -9,5 +9,9 @@ app = Flask(__name__)
 def index():
     return 'Hello World!!!!!!'
 
+@app.route('/fancy')
+def index():
+    return 'Love Fancy!!!!!!'
+
 if __name__ == "__main__":
     app.run(debug = "True")
