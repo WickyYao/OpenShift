@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/a')
 @app.route('/index')
 def index():
-    return 'oh yeah......'
+    return 'oh yeah.'
 
 @app.route('/hello')
 def fancy():
