@@ -6,7 +6,7 @@ import time
 
 app = Flask(__name__)
 
-rc = redis.Redis(host=127.6.26.2, port= 16379, db=0)
+rc = redis.Redis(host= 127.6.26.2, port= 16379, db=0)
 
 @app.route('/')
 @app.route('/a')
