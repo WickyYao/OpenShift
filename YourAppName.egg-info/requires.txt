@@ -1,5 +1,6 @@
-Flask
+Flask>=0.7.2
 flask-babel
 flask-wtf
 markdown
 flup
+redis

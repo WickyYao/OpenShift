@@ -6,7 +6,7 @@ import time
 
 app = Flask(__name__)
 
-rc = redis.Redis()
+rc = redis.Redis(host=os.getenv('WERCKER_REDIS_HOST', 'localhost'),port= 6379, db=0)
 
 @app.route('/')
 @app.route('/a')
