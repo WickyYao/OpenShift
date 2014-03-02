@@ -6,11 +6,10 @@ import time
 
 app = Flask(__name__)
 
-rc = redis.Redis(host= os.environ['OPENSHIFT_REDIS_HOST'],
-                 port= os.environ['OPENSHIFT_REDIS_PORT'],
-                 password = os.environ['REDIS_PASSWORD'])
-##rc = redis.Redis(host= 127.6.26.2, port= 16379, db=0)
-##rc = redis.Redis()
+##rc = redis.Redis(host= os.environ['OPENSHIFT_REDIS_HOST'],
+##                 port= os.environ['OPENSHIFT_REDIS_PORT'],
+##                 password = os.environ['REDIS_PASSWORD'])
+rc = redis.Redis()
 
 @app.route('/')
 @app.route('/a')
@@ -34,6 +33,37 @@ def post_content():
             }
     rc.zadd('chat_content', json.dumps(data), time.time())
     return redirect('/')
+
+@app.route('/comet')
+def comet():
+    ts = request.args.get('ts', time.time())
+
+    cmt = Comet()
+
+    result = cmt.check(ts)
+    if result:
+        return jsonify(**result)
+
+    time.sleep(1)
+
+    ##passed_time = 0
+    ##while passed_time < 30:
+    ##    result = cmt.check(ts)
+    ##    if result:
+    ##        return jsonify(**result)
+    ##    passed_time += 1
+    ##    time.sleep(1)
+
+    return jsonify(ts=time.time())
+
+class Comet(object):
+    def check(self, ts):
+        new_data = rc.zrangebyscore('chat_content', ts, '+inf')
+        if new_data:
+            data = {'content':[]}
+            for item in new_data:
+                data['content'].append(json.loads(item))
+            return dict(data=data, ts=time.time())
 
 if __name__ == "__main__":
     app.run(debug = "True")
