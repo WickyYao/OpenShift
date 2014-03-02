@@ -6,7 +6,9 @@ import time
 
 app = Flask(__name__)
 
-rc = redis.Redis(host= 'OPENSHIFT_REDIS_HOST', port= 'OPENSHIFT_REDIS_PORT')
+rc = redis.Redis(host= os.environ['OPENSHIFT_REDIS_HOST'],
+                 port= os.environ['OPENSHIFT_REDIS_PORT'],
+                 password = os.environ['REDIS_PASSWORD'])
 ##rc = redis.Redis(host= 127.6.26.2, port= 16379, db=0)
 ##rc = redis.Redis()
 
