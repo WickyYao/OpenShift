@@ -44,7 +44,7 @@ def comet():
     if result:
         return jsonify(**result)
 
-    time.sleep(1)
+    time.sleep(1) 
 
     ##passed_time = 0
     ##while passed_time < 30:
