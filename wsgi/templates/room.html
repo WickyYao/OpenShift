@@ -13,12 +13,12 @@
 
     <div id="chat_content" style="height:400px;overflow-y:scroll; border:1px solid #ccc;">
       <table id="content_table" style="width:100%;; padding:5px;">
-        <!--{% for item in room_content %}
+        {% for item in room_content %}
           <tr >
             <td>{{item.content|safe}}</td>
             <td>{{item.created|safe}}</td>
           </tr>
-        {% endfor %}-->
+        {% endfor %}
       </table>
     </div>
     <form action="/post_content" method="POST" id="post_content">
@@ -26,5 +26,5 @@
       <input type="SUBMIT" value="submit" />
     </form>
 </div>
-	<!--<script src="/static/js/main.js"></script>
-    <script> create_room_comet(); </script>-->
+	<script src="/static/js/main.js"></script>
+    <script> create_room_comet(); </script>
