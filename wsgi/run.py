@@ -6,10 +6,10 @@ import time
 
 app = Flask(__name__)
 
-rc = redis.Redis(host= os.environ['OPENSHIFT_REDIS_HOST'],
-                 port= os.environ['OPENSHIFT_REDIS_PORT'],
-                 password = os.environ['REDIS_PASSWORD'])
-##rc = redis.Redis()
+##rc = redis.Redis(host= os.environ['OPENSHIFT_REDIS_HOST'],
+##                 port= os.environ['OPENSHIFT_REDIS_PORT'],
+##                 password = os.environ['REDIS_PASSWORD'])
+rc = redis.Redis()
 
 @app.route('/')
 @app.route('/a')
